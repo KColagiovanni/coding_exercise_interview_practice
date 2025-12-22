@@ -54,87 +54,135 @@ roman_numeral_dict = {
 }
 
 def convert_rn_to_number(rn):
+    print(f'roman numeral: {rn}')
+    # X = 10; I = -1; V = 5 --> 10 + -1 + 5 = 14
+    number_list = []
 
-    number = 0
     for rn_index in range(len(rn)):
+        if len(rn) == 1:
+            return roman_numeral_dict[rn[rn_index]]
 
-        if rn[rn_index] == 'I':
-            if rn_index == 0:
-                number += roman_numeral_dict[rn[rn_index]]
+        elif len(rn) == 2:
+            if roman_numeral_dict[rn[0]] < roman_numeral_dict[rn[1]]:
+                return roman_numeral_dict[rn[1]] - roman_numeral_dict[rn[0]]
             else:
+                return roman_numeral_dict[rn[0]] + roman_numeral_dict[rn[1]]
+
+        elif len(rn) > 2:
+            if roman_numeral_dict[rn[0]] < roman_numeral_dict[rn[1]]:
+                number_list.append(roman_numeral_dict[rn[1]] - roman_numeral_dict[rn[0]])
+            else:
+                number_list.append(roman_numeral_dict[rn[0]] + roman_numeral_dict[rn[1]])
+
+
+
+            if rn_index > 0 and rn_index < len(rn) - 1:
                 if roman_numeral_dict[rn[rn_index - 1]] < roman_numeral_dict[rn[rn_index]]:
-                    number += roman_numeral_dict[rn[rn_index]] - roman_numeral_dict[rn[rn_index - 1]]
+                    number_list.append(-roman_numeral_dict[rn[rn_index]])
                 else:
-                    number += roman_numeral_dict[rn[rn_index]]
+                    number_list.append(roman_numeral_dict[rn[rn_index]])
 
-        elif rn[rn_index] == 'V':
-            if rn_index == 0:
-                number += roman_numeral_dict[rn[rn_index]]
-            else:
-                if roman_numeral_dict[rn[rn_index - 1]] < roman_numeral_dict[rn[rn_index]]:
-                    number += roman_numeral_dict[rn[rn_index]] - roman_numeral_dict[rn[rn_index - 1]]
-                else:
-                    number += roman_numeral_dict[rn[rn_index]]
+            if rn_index == len(rn):
+                number_list.append(roman_numeral_dict[rn[rn_index]])
 
-            #     if rn_index == len(rn) -1:
-            #         number = roman_numeral_dict['V'] - number
-            #     else:
-            #         number += roman_numeral_dict['V']
-            # else:
-            #     if rn[rn_index] < rn[rn_index + 1]:
-            #         number = roman_numeral_dict['V'] - number
-            #     elif rn[rn_index] > rn[rn_index + 1]:
-            #         number = number - roman_numeral_dict['V']
-            #     else:
-            #         number += roman_numeral_dict['V']
-        
-        elif rn[rn_index] == 'X':
-            if rn_index == 0 or rn_index == len(rn) -1:
-                number += roman_numeral_dict['X']
-            else:
-                if rn[rn_index] < rn[rn_index + 1]:
-                    number -= roman_numeral_dict['X']
-                else:
-                    number += roman_numeral_dict['X']
-        
-        elif rn[rn_index] == 'L':
-            if rn_index == 0 or rn_index == len(rn) -1:
-                number += roman_numeral_dict['L']
-            else:
-                if rn[rn_index] < rn[rn_index + 1]:
-                    number -= roman_numeral_dict['L']
-                else:
-                    number += roman_numeral_dict['L']
-        
-        elif rn[rn_index] == 'C':
-            if rn_index == 0 or rn_index == len(rn) -1:
-                number += roman_numeral_dict['C']
-            else:
-                if rn[rn_index] < rn[rn_index + 1]:
-                    number -= roman_numeral_dict['C']
-                else:
-                    number += roman_numeral_dict['C']
-        
-        elif rn[rn_index] == 'D':
-            if rn_index == 0 or rn_index == len(rn) -1:
-                number += roman_numeral_dict['D']
-            else:
-                if rn[rn_index] < rn[rn_index + 1]:
-                    number -= roman_numeral_dict['D']
-                else:
-                    number += roman_numeral_dict['D']
-        
-        elif rn[rn_index] == 'M':
-            if rn_index == 0 or rn_index == len(rn) -1:
-                number += roman_numeral_dict['M']
-            else:
-                if rn[rn_index] < rn[rn_index + 1]:
-                    number -= roman_numeral_dict['M']
-                else:
-                    number += roman_numeral_dict['M']
+            print(number_list)
+            return sum(number_list)
 
-        # print(f'rn is: {rn} | number is: {number}')
-    return number
+
+    #     if rn[rn_index] == 'I':
+    #         if rn_index == 0:
+    #             number += roman_numeral_dict[rn[rn_index]]
+    #         else:
+    #             print(f'I - index is {rn_index} and roman_numeral_dict[rn[rn_index]] is: {roman_numeral_dict[rn[rn_index]]} and roman_numeral_dict[rn[rn_index - 1]] is: {roman_numeral_dict[rn[rn_index - 1]]}')
+    #             if roman_numeral_dict[rn[rn_index - 1]] < roman_numeral_dict[rn[rn_index]]:
+    #                 number = 0
+    #                 number += roman_numeral_dict[rn[rn_index]] - roman_numeral_dict[rn[rn_index - 1]]
+    #             else:
+    #                 number += roman_numeral_dict[rn[rn_index]]
+    #
+    #     elif rn[rn_index] == 'V':
+    #         if rn_index == 0:
+    #             number += roman_numeral_dict[rn[rn_index]]
+    #         else:
+    #             print(f'V - index is {rn_index} and roman_numeral_dict[rn[rn_index]] is: {roman_numeral_dict[rn[rn_index]]} and roman_numeral_dict[rn[rn_index - 1]] is: {roman_numeral_dict[rn[rn_index - 1]]}')
+    #             if roman_numeral_dict[rn[rn_index - 1]] < roman_numeral_dict[rn[rn_index]]:
+    #                 number = 0
+    #                 number += roman_numeral_dict[rn[rn_index]] - roman_numeral_dict[rn[rn_index - 1]]
+    #             else:
+    #                 number += roman_numeral_dict[rn[rn_index]]
+    #
+    #         #     if rn_index == len(rn) -1:
+    #         #         number = roman_numeral_dict['V'] - number
+    #         #     else:
+    #         #         number += roman_numeral_dict['V']
+    #         # else:
+    #         #     if rn[rn_index] < rn[rn_index + 1]:
+    #         #         number = roman_numeral_dict['V'] - number
+    #         #     elif rn[rn_index] > rn[rn_index + 1]:
+    #         #         number = number - roman_numeral_dict['V']
+    #         #     else:
+    #         #         number += roman_numeral_dict['V']
+    #
+    #     elif rn[rn_index] == 'X':
+    #         if rn_index == 0:
+    #             number += roman_numeral_dict[rn[rn_index]]
+    #         else:
+    #             print(f'X - index is {rn_index} and roman_numeral_dict[rn[rn_index]] is: {roman_numeral_dict[rn[rn_index]]} and roman_numeral_dict[rn[rn_index - 1]] is: {roman_numeral_dict[rn[rn_index - 1]]}')
+    #             if roman_numeral_dict[rn[rn_index - 1]] < roman_numeral_dict[rn[rn_index]]:
+    #                 if rn_index == len(rn) - 1:
+    #                     number = 0
+    #                     number += roman_numeral_dict[rn[rn_index]] - roman_numeral_dict[rn[rn_index - 1]]
+    #                 else:
+    #                     number += roman_numeral_dict[rn[rn_index]] - roman_numeral_dict[rn[rn_index - 1]]
+    #             else:
+    #                 number += roman_numeral_dict[rn[rn_index]]
+    #         # if rn_index == 0 or rn_index == len(rn) -1:
+    #         #     number += roman_numeral_dict['X']
+    #         # else:
+    #         #     if rn[rn_index] < rn[rn_index + 1]:
+    #         #         number -= roman_numeral_dict['X']
+    #         #     else:
+    #         #         number += roman_numeral_dict['X']
+    #
+    #     elif rn[rn_index] == 'L':
+    #         if rn_index == 0 or rn_index == len(rn) -1:
+    #             number += roman_numeral_dict['L']
+    #         else:
+    #             if rn[rn_index] < rn[rn_index + 1]:
+    #                 number -= roman_numeral_dict['L']
+    #             else:
+    #                 number += roman_numeral_dict['L']
+    #
+    #     elif rn[rn_index] == 'C':
+    #         if rn_index == 0 or rn_index == len(rn) -1:
+    #             number += roman_numeral_dict['C']
+    #         else:
+    #             if rn[rn_index] < rn[rn_index + 1]:
+    #                 number -= roman_numeral_dict['C']
+    #             else:
+    #                 number += roman_numeral_dict['C']
+    #
+    #     elif rn[rn_index] == 'D':
+    #         if rn_index == 0 or rn_index == len(rn) -1:
+    #             number += roman_numeral_dict['D']
+    #         else:
+    #             if rn[rn_index] < rn[rn_index + 1]:
+    #                 number -= roman_numeral_dict['D']
+    #             else:
+    #                 number += roman_numeral_dict['D']
+    #
+    #     elif rn[rn_index] == 'M':
+    #         if rn_index == 0 or rn_index == len(rn) -1:
+    #             number += roman_numeral_dict['M']
+    #         else:
+    #             if rn[rn_index] < rn[rn_index + 1]:
+    #                 number -= roman_numeral_dict['M']
+    #             else:
+    #                 number += roman_numeral_dict['M']
+    #
+    #     print(f'rn_index is: {rn[rn_index]} | number is: {number}')
+    #
+    # return number
 
 
 def convert_number_to_rn(num):
@@ -154,15 +202,26 @@ if __name__ == '__main__':
     rn8 = 'VIII'
     rn9 = 'IX'
     rn10 = 'XIV'
-    print(f'\n{rn1} to number is: {convert_rn_to_number(rn1)}')
-    print(f'\n{rn2} to number is: {convert_rn_to_number(rn2)}')
-    print(f'\n{rn3} to number is: {convert_rn_to_number(rn3)}')
-    print(f'\n{rn4} to number is: {convert_rn_to_number(rn4)}')
-    print(f'\n{rn5} to number is: {convert_rn_to_number(rn5)}')
-    print(f'\n{rn6} to number is: {convert_rn_to_number(rn6)}')
-    print(f'\n{rn7} to number is: {convert_rn_to_number(rn7)}')
-    print(f'\n{rn8} to number is: {convert_rn_to_number(rn8)}')
-    print(f'\n{rn9} to number is: {convert_rn_to_number(rn9)}')
-    print(f'\n{rn10} to number is: {convert_rn_to_number(rn10)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn1} to number is: {convert_rn_to_number(rn1)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn2} to number is: {convert_rn_to_number(rn2)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn3} to number is: {convert_rn_to_number(rn3)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn4} to number is: {convert_rn_to_number(rn4)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn5} to number is: {convert_rn_to_number(rn5)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn6} to number is: {convert_rn_to_number(rn6)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn7} to number is: {convert_rn_to_number(rn7)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn8} to number is: {convert_rn_to_number(rn8)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn9} to number is: {convert_rn_to_number(rn9)}')
+    print('\n------------------------------------------------------')
+    print(f'{rn10} to number is: {convert_rn_to_number(rn10)}')
+    print('\n------------------------------------------------------')
     print('\n')
     print(f'{num} to Roman Numeral is: {convert_number_to_rn(num)}')
