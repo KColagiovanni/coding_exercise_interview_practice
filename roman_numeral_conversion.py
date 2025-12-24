@@ -43,7 +43,53 @@ Examples:
 20 = XX
 """
 
-roman_numeral_dict = {
+num_dict = {
+    'num1': 1,
+    'num2': 2,
+    'num3': 3,
+    'num4': 4,
+    'num5': 5,
+    'num6': 6,
+    'num7': 7,
+    'num8': 8,
+    'num9': 9,
+    'num10': 10,
+    'num11': 11,
+    'num12': 12,
+    'num13': 13,
+    'num14': 14,
+    'num15': 15,
+    'num16': 2000,
+    'num17': 56,
+    'num18': 26,
+    'num19': 1911,
+    'num20': 160,
+}
+
+rn_dict = {
+    'rn1': 'I',
+    'rn2': 'II',
+    'rn3': 'III',
+    'rn4': 'IV',
+    'rn5': 'V',
+    'rn6': 'VI',
+    'rn7': 'VII',
+    'rn8': 'VIII',
+    'rn9': 'IX',
+    'rn10': 'X',
+    'rn11': 'XI',
+    'rn12': 'XII',
+    'rn13': 'XIII',
+    'rn14': 'XIV',
+    'rn15': 'XV',
+    'rn16': 'MM',  # 2000
+    'rn17': 'LVI',  # 56
+    'rn18': 'XXVI',  # 26
+    'rn19': 'MCMXI',  # 1911
+    'rn20': 'CLX',  # 160
+}
+
+roman_numeral_value_dict = {
     'I':1,
     'V':5,
     'X':10,
@@ -54,95 +100,55 @@ roman_numeral_dict = {
 }
 
 def convert_rn_to_number(rn):
-    # print(f'roman numeral: {rn}')
-    # X = 10; I = -1; V = 5 --> 10 + -1 + 5 = 14
     number_list = []
 
     for value_index in range(len(rn)):
         if value_index < len(rn) - 1:
-            if (roman_numeral_dict[rn[value_index]] > roman_numeral_dict[rn[value_index + 1]] or
-                    roman_numeral_dict[rn[value_index]] == roman_numeral_dict[rn[value_index + 1]]):
+            if (roman_numeral_value_dict[rn[value_index]] > roman_numeral_value_dict[rn[value_index + 1]] or
+                    roman_numeral_value_dict[rn[value_index]] == roman_numeral_value_dict[rn[value_index + 1]]):
                 # print(f'1. appending {roman_numeral_dict[rn[value_index]]}')
-                number_list.append(roman_numeral_dict[rn[value_index]])
+                number_list.append(roman_numeral_value_dict[rn[value_index]])
             else:
                 # print(f'2. appending {-roman_numeral_dict[rn[value_index]]}')
-                number_list.append(-roman_numeral_dict[rn[value_index]])
+                number_list.append(-roman_numeral_value_dict[rn[value_index]])
 
         else:
             # print(f'3. appending {roman_numeral_dict[rn[value_index]]}')
-            number_list.append(roman_numeral_dict[rn[value_index]])
+            number_list.append(roman_numeral_value_dict[rn[value_index]])
 
     # print(f'sum of the number list is: {sum(number_list)}')
     return sum(number_list)
 
 
 def convert_number_to_rn(num):
-
     rn = ''
+
+    while num > 0:
+
+        m = num // roman_numeral_value_dict['M']
+        if m > 0:
+            rn = 'M' * m
+        d = m // roman_numeral_value_dict['D']
+        c = d // roman_numeral_value_dict['C']
+        l = c // roman_numeral_value_dict['L']
+        x = l // roman_numeral_value_dict['X']
+        v = x // roman_numeral_value_dict['V']
+        i = v // roman_numeral_value_dict['I']
+        num = 0
+
+    print(f'i:{i} | v:{v} | x:{x} | l:{l} | c:{c} | d:{d} | m:{m}')
     return rn
 
 if __name__ == '__main__':
-    num = 14
-    rn1 = 'I'
-    rn2 = 'II'
-    rn3 = 'III'
-    rn4 = 'IV'
-    rn5 = 'V'
-    rn6 = 'VI'
-    rn7 = 'VII'
-    rn8 = 'VIII'
-    rn9 = 'IX'
-    rn10 = 'X'
-    rn11 = 'XI'
-    rn12 = 'XII'
-    rn13 = 'XIII'
-    rn14 = 'XIV'
-    rn15 = 'XV'
-    rn16 = 'MM'  # 2000
-    rn17 = 'LVI'  # 56
-    rn18 = 'XXVI'  # 26
-    rn19 = 'MCMXI'  # 1911
-    rn20 = 'CLX'  # 160
-    print('\n------------------------------------------------------')
-    print(f'{rn1} to number is: {convert_rn_to_number(rn1)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn2} to number is: {convert_rn_to_number(rn2)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn3} to number is: {convert_rn_to_number(rn3)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn4} to number is: {convert_rn_to_number(rn4)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn5} to number is: {convert_rn_to_number(rn5)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn6} to number is: {convert_rn_to_number(rn6)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn7} to number is: {convert_rn_to_number(rn7)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn8} to number is: {convert_rn_to_number(rn8)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn9} to number is: {convert_rn_to_number(rn9)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn10} to number is: {convert_rn_to_number(rn10)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn11} to number is: {convert_rn_to_number(rn11)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn12} to number is: {convert_rn_to_number(rn12)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn13} to number is: {convert_rn_to_number(rn13)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn14} to number is: {convert_rn_to_number(rn14)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn15} to number is: {convert_rn_to_number(rn15)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn16} to number is: {convert_rn_to_number(rn16)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn17} to number is: {convert_rn_to_number(rn17)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn18} to number is: {convert_rn_to_number(rn18)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn19} to number is: {convert_rn_to_number(rn19)}')
-    print('\n------------------------------------------------------')
-    print(f'{rn20} to number is: {convert_rn_to_number(rn20)}')
-    print('\n------------------------------------------------------')
-    print('\n')
-    print(f'{num} to Roman Numeral is: {convert_number_to_rn(num)}')
+
+    print('~~~~~~~~~~~~~~~ Roman Numeral to Number Converter ~~~~~~~~~~~~~~~')
+    for key, value in rn_dict.items():
+        print('------------------------------------------------------')
+        print(f'{value} to number is: {convert_rn_to_number(value)}')
+
+    print('\n\n~~~~~~~~~~~~~~~ Number to Roman Numeral Converter ~~~~~~~~~~~~~~~')
+    for key, value in num_dict.items():
+        print('------------------------------------------------------')
+        print(f'{value} to number is: {convert_number_to_rn(value)}')
+    # print('\n')
+    # print(f'{num1} to Roman Numeral is: {convert_number_to_rn(num1)}')
