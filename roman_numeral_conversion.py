@@ -91,11 +91,17 @@ rn_dict = {
 
 roman_numeral_value_dict = {
     'I':1,
+    'IV':4,
     'V':5,
+    'IX':9,
     'X':10,
+    'XL':40,
     'L':50,
+    'XC':90,
     'C':100,
+    'CD':400,
     'D':500,
+    'CM':900,
     'M':1000
 }
 
@@ -123,20 +129,114 @@ def convert_rn_to_number(rn):
 def convert_number_to_rn(num):
     rn = ''
 
-    while num > 0:
+    dict_it = iter(roman_numeral_value_dict.items())
 
-        m = num // roman_numeral_value_dict['M']
-        if m > 0:
-            rn = 'M' * m
-        d = m // roman_numeral_value_dict['D']
-        c = d // roman_numeral_value_dict['C']
-        l = c // roman_numeral_value_dict['L']
-        x = l // roman_numeral_value_dict['X']
-        v = x // roman_numeral_value_dict['V']
-        i = v // roman_numeral_value_dict['I']
-        num = 0
+    while key_value := next(dict_it, None):
+        rn_key, rn_value = key_value
 
-    print(f'i:{i} | v:{v} | x:{x} | l:{l} | c:{c} | d:{d} | m:{m}')
+        print(f'rn_key is: {rn_key} |  rn_value is: {rn_value}')
+
+        # rn += rn_key
+        if num > 0:
+            numeral = num // rn_value
+            num -= rn_value * numeral
+            if numeral > 0:
+                rn += rn_key * numeral
+
+        else:
+            break
+
+        # # 1000
+        # print(f'num before "M" is: {num}')
+        # m = num // roman_numeral_value_dict['M']
+        # num -= roman_numeral_value_dict['M'] * m
+        # if m > 0:
+        #     rn = 'M' * m
+        #
+        # # 900
+        # print(f'num before "CM" is: {num}')
+        # cm = num // roman_numeral_value_dict['CM']
+        # num -= roman_numeral_value_dict['CM'] * cm
+        # if cm > 0:
+        #     rn += 'CM' * cm
+        #
+        # # 500
+        # print(f'num before "D" is: {num}')
+        # d = num // roman_numeral_value_dict['D']
+        # num -= roman_numeral_value_dict['D'] * d
+        # if d > 0:
+        #     rn += 'D' * d
+        #
+        # # 400
+        # print(f'num before "CD" is: {num}')
+        # cd = num // roman_numeral_value_dict['CD']
+        # num -= roman_numeral_value_dict['CD'] * cd
+        # if cd > 0:
+        #     rn += 'CD' * cd
+        #
+        # # 100
+        # print(f'num before "C" is: {num}')
+        # c = num // roman_numeral_value_dict['C']
+        # num -= roman_numeral_value_dict['C'] * c
+        # if c > 0:
+        #     rn += 'C' * c
+        #
+        # # 90
+        # print(f'num before "XC" is: {num}')
+        # xc = num // roman_numeral_value_dict['XC']
+        # num -= roman_numeral_value_dict['XC'] * xc
+        # if xc > 0:
+        #     rn += 'XC' * xc
+        #
+        # # 50
+        # print(f'num before "L" is: {num}')
+        # l = num // roman_numeral_value_dict['L']
+        # num -= roman_numeral_value_dict['L'] * l
+        # if l > 0:
+        #     rn += 'L' * l
+        #
+        # # 40
+        # print(f'num before "XL" is: {num}')
+        # xl = num // roman_numeral_value_dict['XL']
+        # num -= roman_numeral_value_dict['XL'] * xl
+        # if xl > 0:
+        #     rn += 'XL' * xl
+        #
+        # # 10
+        # print(f'num before "X" is: {num}')
+        # x = num // roman_numeral_value_dict['X']
+        # num -= roman_numeral_value_dict['X'] * x
+        # if x > 0:
+        #     rn += 'X' * x
+        #
+        # # 9
+        # print(f'num before "IX" is: {num}')
+        # ix = num // roman_numeral_value_dict['IX']
+        # num -= roman_numeral_value_dict['IX'] * ix
+        # if ix > 0:
+        #     rn += 'IX' * ix
+        #
+        # # 5
+        # print(f'num before "V" is: {num}')
+        # v = num // roman_numeral_value_dict['V']
+        # num -= roman_numeral_value_dict['V'] * v
+        # if v > 0:
+        #     rn += 'V' * v
+        #
+        # # 4
+        # print(f'num before "IV" is: {num}')
+        # iv = num // roman_numeral_value_dict['IV']
+        # num -= roman_numeral_value_dict['IV'] * iv
+        # if iv > 0:
+        #     rn += 'IV' * iv
+        #
+        # # 1
+        # print(f'num before "I" is: {num}')
+        # i = num // roman_numeral_value_dict['I']
+        # num -= roman_numeral_value_dict['I'] * i
+        # if i > 0:
+        #     rn += 'I' * i
+
     return rn
 
 if __name__ == '__main__':
