@@ -20,6 +20,15 @@ import time
 sample_counter = []
 
 def validate_data(timestamp, data_value, min_tolerance, max_tolerance, n_samples):
+    """
+
+    :param timestamp:
+    :param data_value:
+    :param min_tolerance:
+    :param max_tolerance:
+    :param n_samples:
+    :return:
+    """
     tolerance = 'In-Range'
     if data_value < min_tolerance or data_value > max_tolerance:
         sample_counter.append(timestamp)
@@ -42,9 +51,28 @@ def validate_data(timestamp, data_value, min_tolerance, max_tolerance, n_samples
     return ['PASS', 0]
 
 if '__main__' == __name__:
-    for count in range(100):
-        test_result = validate_data(count, random.randint(40, 60), 45, 55, 5)
+
+    data_samples = 100  # Number of times to create "fake" data.
+    min_range = 40  # Lower range for the "fake" data.
+    max_range = 60  # Upper range for the "fake" data.
+    min_tolerance = 45  # Lower value for the tolerance.
+    max_tolerance = 55  # Upper value for the tolerance.
+    n_samples = 5  # Number of consecutive samples that can exceed an acceptable range.
+
+    # Create "fake" data
+    for count in range(data_samples):
+
+        # Send data to the function
+        test_result = validate_data(
+            count,
+            random.randint(min_range, max_range),
+            min_tolerance,
+            max_tolerance,
+            n_samples
+        )
+
+        # Check for failed results
         if test_result[0] == 'FAIL':
             print(f'Results: {test_result[0]} | (Timestamps: {test_result[1]})')
             break
-        time.sleep(.1)
+        time.sleep(.1)  # Simulate data delay
