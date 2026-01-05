@@ -52,12 +52,12 @@ def validate_data(timestamp, data_value, min_tolerance, max_tolerance, n_samples
 
 if '__main__' == __name__:
 
-    data_samples = 100  # Number of times to create "fake" data.
+    data_samples = 1000  # Number of times to create "fake" data.
     min_range = 40  # Lower range for the "fake" data.
     max_range = 60  # Upper range for the "fake" data.
     min_tolerance = 45  # Lower value for the tolerance.
     max_tolerance = 55  # Upper value for the tolerance.
-    n_samples = 5  # Number of consecutive samples that can exceed an acceptable range.
+    n_samples = 10  # Number of consecutive samples that can exceed an acceptable range.
 
     # Create "fake" data
     for count in range(data_samples):
