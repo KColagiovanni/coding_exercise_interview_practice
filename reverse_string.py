@@ -1,4 +1,9 @@
 def reverse_string(string):
+    """
+    My non-Pythonic way to reverse a string.
+    :param string: (str) The string to be reversed.
+    :return: None
+    """
     print(f'Normal input is: {string}')
     rev_string = ''
     for char in range(len(string)):
@@ -7,6 +12,11 @@ def reverse_string(string):
     print(f'Reversed input is: {rev_string}')
 
 def pythonic_reverse_string(string):
+    """
+    The Pythonic and most simple way to reverse a string.
+    :param string: (str) The string to be reversed.
+    :return: None
+    """
     print(f'Normal input is: {string}')
     print(f'Reversed input is: {string[::-1]}')
 
