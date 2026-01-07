@@ -21,6 +21,8 @@ def pythonic_reverse_string(string):
     print(f'Reversed input is: {string[::-1]}')
 
 if __name__ == '__main__':
+
+    # Run the program and call the two functions
     print(f'My reverse version')
     reverse_string('colagiovanni')
 
