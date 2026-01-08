@@ -22,12 +22,12 @@ sample_counter = []
 def validate_data(timestamp, data_value, min_tolerance, max_tolerance, n_samples):
     """
 
-    :param timestamp:
-    :param data_value:
-    :param min_tolerance:
-    :param max_tolerance:
-    :param n_samples:
-    :return:
+    :param timestamp: The timestamp of the data.
+    :param data_value: The value of the data.
+    :param min_tolerance: The minimum allowable tolerance for the data value.
+    :param max_tolerance: The maximum allowable tolerance for the data value.
+    :param n_samples: The number of consecutive samples that can exceed an acceptable range for more than N samples.
+    :return: (list) [(str) result: PASS/FAIL, (list) failed timestamps]
     """
     tolerance = 'In-Range'
     if data_value < min_tolerance or data_value > max_tolerance:
