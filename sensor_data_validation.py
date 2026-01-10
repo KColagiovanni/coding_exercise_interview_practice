@@ -63,7 +63,7 @@ if '__main__' == __name__:
     # Create "fake" data
     for count in range(data_samples):
 
-        # Send data to the function
+        # Send data to the function each loop
         test_result = validate_data(
             count,
             random.randint(min_range, max_range),
@@ -76,4 +76,4 @@ if '__main__' == __name__:
         if test_result[0] == 'FAIL':
             print(f'Results: {test_result[0]} | (Timestamps: {test_result[1]})')
             break
-        time.sleep(delay)  # Simulate data delay
+        time.sleep(delay)  # Simulate incoming data delay
