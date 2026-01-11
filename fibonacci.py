@@ -1,8 +1,10 @@
 def fibonacci(n):
     """
     Generates the first n_terms of the Fibonacci sequence iteratively.
+    :param n: (int) The Nth term in the Fibonacci sequence.
+    :return: None
     """
-    a, b = 0, 1  # Initial values.
+    a, b = 0, 1  # Initial values of the Fibonacci sequence.
     count = 0
 
     while count < n:
@@ -10,9 +12,9 @@ def fibonacci(n):
         temp = a
         a = b
         b = temp + b
-        # a, b = b, a + b  # Pythonic
+        # a, b = b, a + b  # Pythonic way to accomplish the above 3 lines.
         count += 1
     print(f'The {n}th number in the Fibonacci sequence is: {a}')
 
 if __name__ == '__main__':
-    fibonacci(9)
+    fibonacci(20577)
