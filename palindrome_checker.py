@@ -1,3 +1,4 @@
+#
 word_list = [
     'one',
     'two',
@@ -8,7 +9,11 @@ word_list = [
 ]
 
 def is_it_a_palindrome(word):
-    """ Check if a word is the same forwards and backwards """
+    """
+    Check if a word is the same forwards and backwards
+    :param word: (str) The word that will be checked to see if it's a palindrome.
+    :return: None
+    """
 
     # Non-Pythonic way.
     rev_string = ''
@@ -16,7 +21,7 @@ def is_it_a_palindrome(word):
         last_char = word[-1 - char]
         rev_string += last_char
 
-    # if word == word[::-1]:  # Pythonic
+    # if word == word[::-1]:  # Pythonic way to accomplish the above 4 lines.
     if word == rev_string:
         print(f'{word} is a palindrome')
     else:
