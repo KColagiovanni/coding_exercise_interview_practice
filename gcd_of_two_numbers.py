@@ -1,3 +1,4 @@
+# Take two numbers as input and output the greatest common denominator.
 def gcd(a, b):
     denominator = 0
 
@@ -10,4 +11,4 @@ def gcd(a, b):
 if __name__ == '__main__':
     gcd(12, 21)
     gcd(17, 213)
-    # gcd(23764, 21349)
+    gcd(23764, 21349)

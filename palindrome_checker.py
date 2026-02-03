@@ -1,4 +1,4 @@
-#
+# Take a word as input and check if it is a Palindrome(The same forwards as it is backwards) or not.
 word_list = [
     'one',
     'two',
