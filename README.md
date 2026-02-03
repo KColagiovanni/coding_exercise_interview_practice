@@ -1,5 +1,5 @@
 # Coding Exercise Interview Practice
-Typical Coding Exercises used Interviews:
+Typical Coding Exercises used in Interviews:
 * Reverse a string.
 * Convert roman numeral to number and number to roman numeral.
 * Print out n numbers in the Fibonacci sequence.
