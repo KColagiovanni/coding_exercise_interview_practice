@@ -7,3 +7,4 @@ Typical Coding Exercises used in Interviews:
 * Find GCD between two numbers.
 * Sensor Data Validation.
 * Count the number of occurrences a number shows up in a list.
+* Recursion - Double a number every iteration until a target is reached.
