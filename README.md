@@ -6,3 +6,4 @@ Typical Coding Exercises used in Interviews:
 * Check if a string is a palindrome.
 * Find GCD between two numbers.
 * Sensor Data Validation.
+* Count the number of occurrences a number shows up in a list.
