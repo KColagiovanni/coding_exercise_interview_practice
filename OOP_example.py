@@ -1,6 +1,7 @@
 import random
 
 class Sensor:
+
     def __init__(self, sensor_id, min_value, max_value):
         self.sensor_id = sensor_id
         self.min_value = min_value
@@ -20,18 +21,20 @@ class Sensor:
     def __str__(self):
         return f"Sensor({self.sensor_id}, readings={len(self.readings)})"
 
-temp_sensor = Sensor("TEMP-001", -40, 125)
+temp_sensor = Sensor("TEMP-001", 20, 35)
 # temp_sensor.add_reading(25)
 # temp_sensor.add_reading(30)
 for temp_value in range(100):
     temp_sensor.add_reading(random.randint(20, 35))
 
-print(temp_sensor.average())   # 27.5
-print(temp_sensor)             # Sensor(TEMP-001, readings=2)
+print(f'Avg Temp: {temp_sensor.average()}*c')
+print(temp_sensor)
 
+
+# Inheritance
 class TemperatureSensor(Sensor):
     def __init__(self, sensor_id):
-        super().__init__(sensor_id, min_value=-40, max_value=125)
+        super().__init__(sensor_id, min_value=20, max_value=35)
 
     def to_fahrenheit(self):
         avg = self.average()
@@ -40,11 +43,15 @@ class TemperatureSensor(Sensor):
         return avg * 9 / 5 + 32
 
 t = TemperatureSensor("TEMP-002")
-t.add_reading(20)
-t.add_reading(22)
+# t.add_reading(20)
+# t.add_reading(22)
+for temp_value in range(100):
+    t.add_reading(random.randint(20, 35))
 
-print(t.to_fahrenheit())  # 71.6
+print(f'Avg Temp: {t.to_fahrenheit()}*f')
 
+
+# Polymorphism
 class PressureSensor(Sensor):
     def __init__(self, sensor_id):
         super().__init__(sensor_id, min_value=0, max_value=300)
@@ -54,3 +61,9 @@ class PressureSensor(Sensor):
         if avg is None:
             return None
         return round(avg, 2)
+
+# for psi_value in range(100):
+#     psi.add_reading(random.randint(100, 200))
+
+psi = PressureSensor('TEMP-003')
+print(f'Avg Pressure: {psi.average()}psi')
