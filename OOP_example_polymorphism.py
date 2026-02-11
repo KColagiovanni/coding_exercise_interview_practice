@@ -1,7 +1,7 @@
 import random
 from OOP_example_basic import Sensor
 
-# Polymorphism
+#################### Polymorphism ####################
 '''
 The word "polymorphism" means "many forms", and in programming it refers to methods/functions/operators with the same 
 name that can be executed on many objects or classes. An example of a Python function that can be used on different 

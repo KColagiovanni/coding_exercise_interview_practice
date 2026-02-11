@@ -1,5 +1,6 @@
 import random
 
+#################### OOP ####################
 class Sensor:
 
     def __init__(self, sensor_id, min_value, max_value):
