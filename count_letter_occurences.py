@@ -1,7 +1,6 @@
 # Count the occurrences of each letter in a list of words.
 
 words = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
-
 occurrences = {}
 
 def count_number_of_letters(letter):
