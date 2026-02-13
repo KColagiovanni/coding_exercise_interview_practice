@@ -16,6 +16,11 @@ strings = [
 ]
 
 def find_non_repeater(value):
+    """
+    Loop through a string and see if the current character is the same as the previous.
+    :param value: (str) The string that will be searched for repeating characters.
+    :return: (str) The first non-repeating character in the string.
+    """
     initial_value = ''
     for char_index in range(len(value)):
         if char_index == 0:
@@ -24,7 +29,6 @@ def find_non_repeater(value):
             if value[char_index] == initial_value:
                 continue
             else:
-
                 return value[char_index]
 
 if __name__ == '__main__':
@@ -32,6 +36,6 @@ if __name__ == '__main__':
     for string in strings:
         output = find_non_repeater(string)
         if output:
-            print(f'{output} is the first non-repeated word in {string}')
+            print(f'{output} is the first non-repeated character in {string}')
         else:
             print(f'{string} did not have any repeating characters.')
