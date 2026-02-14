@@ -33,6 +33,7 @@ def find_non_repeater(value):
 
 if __name__ == '__main__':
 
+    # Loop through each word in the "strings" list.
     for string in strings:
         output = find_non_repeater(string)
         if output:
